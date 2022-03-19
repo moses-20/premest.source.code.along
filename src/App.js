@@ -31,7 +31,7 @@ class App extends Component {
           list: result
         }
       });
-    }, 3500);
+    }, 2500);
   }
 
   render() {
