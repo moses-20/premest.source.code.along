@@ -1,59 +1,36 @@
-import ProfileCard from "./components/ProfileCard";
 import { useState } from "react";
+import ProfileForm from "./components/ProfileForm";
+import ProfileCard from "./components/ProfileCard";
 
 function App() {
-  const [writers, setWriters] = useState({
-    loading: false,
-    list: []
-  });
+  const [allProfiles, setAllProfiles] = useState([
+    {
+      firstName: "Moses",
+      lastName: "Gameli",
+      email: "mosesgameli20@gmail.com",
+      phone: "0240695050",
+      language: "Ewe",
+      termsAgree: true
+    }
+  ]);
 
-  const handleClick = () => {
-    setWriters((previousState) => ({
-      ...previousState,
-      loading: true
-    }));
-
-    setTimeout(async () => {
-      let resp = await fetch("/writers.json");
-      let result = await resp.json();
-
-      setWriters((previousState) => ({
-        ...previousState,
-        loading: false,
-        list: result
-      }));
-    }, 2500);
+  const updateProfiles = (profile) => {
+    let arr = allProfiles;
+    arr.push(profile);
+    setAllProfiles([...arr]);
   };
 
-  if (writers.loading) {
-    return (
-      <div>
-        <h1> Writer Profiles </h1>
-        <div className="container">
-          <div className="card action">
-            <p className="infoText"> Loading... </p>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
   return (
-    <div>
-      <h1> Writer Profiles </h1>
-      <div className="container">
-        {writers.list.length === 0 ? (
-          <div className="card action">
-            <p className="infoText"> Oops... no writer profile found</p>
-            <button className="actionBtn" onClick={handleClick}>
-              Get Writers
-            </button>
-          </div>
-        ) : (
-          writers.list.map((writer) => (
-            <ProfileCard key={writer.id} writer={writer} />
-          ))
-        )}
+    <div className="app">
+      <h1> Profile Maker </h1>
+      <div>
+        <ProfileForm submit={updateProfiles} />
+        <hr />
+        <div className="list">
+          {allProfiles.map((person, index) => (
+            <ProfileCard key={index} card={person} />
+          ))}
+        </div>
       </div>
     </div>
   );
