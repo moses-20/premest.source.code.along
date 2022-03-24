@@ -5,12 +5,10 @@ import ProfileCard from "./components/ProfileCard";
 function App() {
   const [allProfiles, setAllProfiles] = useState([
     {
-      firstName: "Moses",
-      lastName: "Gameli",
-      email: "mosesgameli20@gmail.com",
-      phone: "0240695050",
-      language: "Ewe",
-      termsAgree: true
+      firstName: "Gbemu",
+      lastName: "Terra",
+      email: "gbemu@google.com",
+      phone: "020123456"
     }
   ]);
 

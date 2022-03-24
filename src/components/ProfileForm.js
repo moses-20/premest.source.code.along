@@ -17,8 +17,6 @@ function ProfileForm({ submit }) {
 
   const handleForm = (e) => {
     e.preventDefault();
-
-    console.log(profile);
     submit(profile);
   };
 
