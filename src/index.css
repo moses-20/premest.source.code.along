@@ -18,6 +18,18 @@ h1 {
   text-decoration: underline;
 }
 
+.post {
+  margin: 10px auto;
+  max-width: 500px;
+  padding: 10px;
+  background-color: coral;
+}
+
+.post > h3 {
+  text-align: center;
+}
+
+/*
 h3 {
   color: #2c1203;
   text-transform: uppercase;
@@ -83,4 +95,4 @@ hr {
   margin: 5px;
   padding: 15px;
   background-color: darkcyan;
-}
+} */
