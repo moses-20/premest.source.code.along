@@ -1,32 +1,26 @@
+import { useNavigate } from "react-router-dom";
 import withLayout from "./withLayout";
 
 function Home() {
+  const navigate = useNavigate();
+
   return (
     <div>
-      <h1> Home </h1>
+      <div className="banner">
+        <h1> Welcome to my webpage</h1>
+        <p>
+          Exercitation quis est id aute nulla officia excepteur dolore quis
+          laboris.
+        </p>
 
-      <div>
-        <p>
-          Excepteur laboris proident reprehenderit dolore quis culpa laboris
-          nostrud ad laboris incididunt. Do elit minim veniam culpa minim
-          voluptate nostrud laborum proident commodo laborum labore tempor
-          dolor. Officia ea aliqua ipsum sunt mollit commodo aliquip pariatur
-          exercitation cillum eiusmod.
-        </p>
-        <p>
-          Excepteur laboris proident reprehenderit dolore quis culpa laboris
-          nostrud ad laboris incididunt. Do elit minim veniam culpa minim
-          voluptate nostrud laborum proident commodo laborum labore tempor
-          dolor. Officia ea aliqua ipsum sunt mollit commodo aliquip pariatur
-          exercitation cillum eiusmod.
-        </p>
-        <p>
-          Excepteur laboris proident reprehenderit dolore quis culpa laboris
-          nostrud ad laboris incididunt. Do elit minim veniam culpa minim
-          voluptate nostrud laborum proident commodo laborum labore tempor
-          dolor. Officia ea aliqua ipsum sunt mollit commodo aliquip pariatur
-          exercitation cillum eiusmod.
-        </p>
+        <div className="actions-wrap">
+          <button className="btn-outline" onClick={() => navigate("/about")}>
+            About Me
+          </button>
+          <button className="btn-contain" onClick={() => navigate("/blog")}>
+            Read Blogs
+          </button>
+        </div>
       </div>
     </div>
   );

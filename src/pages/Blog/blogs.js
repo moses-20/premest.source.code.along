@@ -1,8 +1,8 @@
-import { useState } from "react";
-import { useEffect } from "react";
-import withLayout from "./withLayout";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
-function Blog() {
+function BlogList() {
+  const navigate = useNavigate();
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
@@ -12,9 +12,14 @@ function Blog() {
     })();
   }, []);
 
-  const handleClick = (id) => {};
+  const handleClick = (id) => {
+    const post = posts[id - 1];
+
+    navigate(`/blog/${post.slug}`, { state: { post } });
+  };
+
   return (
-    <div>
+    <div style={{ maxWidth: "700px", margin: "auto" }}>
       <div>
         {posts.map((post) => (
           <div key={post.id} style={{ display: "flex", margin: "20px 0" }}>
@@ -36,8 +41,9 @@ function Blog() {
               <p>{post.extract}</p>
 
               <button
+                className="btn-contain"
                 onClick={() => handleClick(post.id)}
-                style={{ alignSelf: "end", padding: "5px 10px" }}
+                style={{ alignSelf: "end" }}
               >
                 Read More
               </button>
@@ -49,4 +55,4 @@ function Blog() {
   );
 }
 
-export default withLayout(Blog);
+export default BlogList;
