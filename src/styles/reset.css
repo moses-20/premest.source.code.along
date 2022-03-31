@@ -77,6 +77,7 @@ video {
   font-family: "Mulish", sans-serif;
   font-size: 100%;
   vertical-align: baseline;
+  color: var(--text-color);
   background: transparent;
 }
 
@@ -84,7 +85,8 @@ html,
 body,
 div#root {
   height: 100%;
-  line-height: 1;
+  line-height: 1.5;
+  background-color: var(--default-bg);
 }
 
 article,
@@ -161,7 +163,7 @@ hr {
   display: block;
   height: 1px;
   border: 0;
-  border-top: 1px solid #cccccc;
+  border-top: 1px solid var(--default-bg);
   margin: 1em 0;
   padding: 0;
 }

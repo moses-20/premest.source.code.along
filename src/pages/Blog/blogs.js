@@ -22,12 +22,23 @@ function BlogList() {
     <div style={{ maxWidth: "700px", margin: "auto" }}>
       <div>
         {posts.map((post) => (
-          <div key={post.id} style={{ display: "flex", margin: "20px 0" }}>
+          <div
+            key={post.id}
+            className="card"
+            style={{
+              display: "flex",
+              margin: "20px 0",
+              padding: "15px",
+              borderRadius: "3px",
+              backgroundColor: "var(--card-bg)"
+            }}
+          >
             <img
               src={`/images/${post.image}`}
               alt=""
               height={200}
               width={200}
+              style={{ borderRadius: "4px" }}
             />
             <div
               style={{

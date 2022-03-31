@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { useThemeContext } from "../context/theme.context";
 
 function withLayout(Component) {
   function Layout() {
     const location = useLocation();
     const [activeNav, setActiveNav] = useState("home");
+    const { darkTheme, toggleTheme } = useThemeContext();
 
     useEffect(() => {
       let currentLoc = location.pathname.split("/");
@@ -46,8 +48,21 @@ function withLayout(Component) {
               </span>
             </nav>
           </div>
+          <div>
+            <label className="switch">
+              <input
+                type="checkbox"
+                value={darkTheme}
+                className={`${darkTheme ? "dark-check" : "light-check"}`}
+                onChange={(e) => toggleTheme(e.target.checked)}
+              />
+              <span className="slider round"></span>
+            </label>
+          </div>
         </header>
-        <main className="main-component">
+        <main
+          className={`main-component ${darkTheme ? "main-component-dark" : ""}`}
+        >
           <Component />
         </main>
         <footer>&copy; 2022 PreMEST</footer>
